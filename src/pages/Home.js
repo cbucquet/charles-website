@@ -57,7 +57,7 @@ const Home = () => {
         </div>
       </div>
       <div className="more-content">
-        <p>{french ? "Je suis un eleve d'info a UCLA. Bienvenue sur mon site!" : "I'm a senior at UCLA studying Computer Science. Welcome to my website!"}</p>
+        <p>{french ? "Je suis un élève d'info à UCLA. Bienvenue sur mon site!" : "I'm a senior at UCLA studying Computer Science. Welcome to my website!"}</p>
         <div className="action-buttons">
           <Link to="/projects">
             See my projects
