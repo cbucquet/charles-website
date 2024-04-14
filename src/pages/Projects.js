@@ -10,18 +10,24 @@ import golftrack from '../images/golftrack.png'
 import leesto from '../images/leesto.png'
 import sharebook from '../images/sharebook.png'
 import brain from '../images/brain.jpeg'
+import bruinline from '../images/bruinline.png'
+import fitus from '../images/fitus.png'
 
 
-const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, smallImage = false }) => {
+const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, imageType = "NORMAL" }) => {
     return (
       <div className="projectCard">
         <div className="cardInfoContainer">
-            {smallImage ? (
+            {imageType==="SMALL" && (
               <div class="smallCardImageContainer">
                 <img className="smallCardImage" src={imageSrc} alt={title} />
               </div>
-            ) : (
+            )}
+            {imageType==="NORMAL" && (
               <img className="cardImage" src={imageSrc} alt={title} />
+            )}
+            {imageType==="FIT" && (
+              <img className="fitCardImage" src={imageSrc} alt={title} />
             )}
             <h3 className="cardTitle">{title}</h3>
             <p className="cardDesc">{description}</p>
@@ -77,28 +83,52 @@ const Projects = () => {
 
     const personalProjectsData = [
       {
+        title: 'BruinLine',
+        imageSrc: bruinline,
+        description: 'Choose a dining hall with your friends!',
+        projLink: "NONE",
+        gitLink: "https://github.com/matthewcyy/BruinLine",
+        imageType: "FIT",
+      },
+      {
         title: 'GolfTrack',
         imageSrc: golftrack,
         description: 'Aim your phone camera at the flagpole to find its distance',
         projLink: "NONE",
-        gitLink: "NONE",
-        smallImage: true,
+        gitLink: "https://github.com/cbucquet/GolfTrack",
+        imageType: "SMALL",
       },
       {
         title: 'C-Calcul',
         imageSrc: c_calcul,
         description: 'Practice mental math by yourself or with others',
         projLink: "NONE",
-        gitLink: "NONE",
-        smallImage: true,
+        gitLink: "https://github.com/cbucquet/C-Calcul",
+        imageType: "SMALL",
       },
       {
         title: 'BROqoli',
         imageSrc: broqoli,
         description: 'Easy way to keep track of your crypto portfolio',
         projLink: "NONE",
-        gitLink: "NONE",
-        smallImage: true,
+        gitLink: "https://github.com/cbucquet/BROqoli",
+        imageType: "SMALL",
+      },
+      {
+        title: 'FitUs',
+        imageSrc: fitus,
+        description: 'Encourage employees to exercise via donations for every workout tracked in the app',
+        projLink: "NONE",
+        gitLink: "https://github.com/cbucquet/FitUs",
+        imageType: "SMALL",
+      },
+      {
+        title: 'Leesto',
+        imageSrc: leesto,
+        description: 'Share and modify your grocery lists with your family',
+        projLink: "NONE",
+        gitLink: "https://github.com/cbucquet/Leesto",
+        imageType: "SMALL",
       },
       {
         title: 'ShareBook',
@@ -106,15 +136,7 @@ const Projects = () => {
         description: 'Remember what books to bring at school',
         projLink: "NONE",
         gitLink: "NONE",
-        smallImage: true,
-      },
-      {
-        title: 'Leesto',
-        imageSrc: leesto,
-        description: 'Share and modify your grocery lists with your family',
-        projLink: "NONE",
-        gitLink: "NONE",
-        smallImage: true,
+        imageType: "SMALL",
       },
     ];
   
@@ -151,7 +173,7 @@ const Projects = () => {
             description={project.description}
             projLink={project.projLink}
             gitLink={project.gitLink}
-            smallImage={project.smallImage}
+            imageType={project.imageType}
             />
         ))}
         </div>

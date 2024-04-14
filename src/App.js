@@ -4,6 +4,7 @@ import { Route, Link, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
+import Career from './pages/Career';
 import './App.css';
 import test from './images/test.png'
 
@@ -30,7 +31,7 @@ function App() {
         <Route exact path="/" element={<Home/>} />
         <Route path="/projects" element={<Projects/>} />
         <Route path="/about" element={<About/>} />
-        <Route path="/career" element={<></>} />
+        <Route path="/career" element={<Career/>} />
       </Routes>
 
     </div>

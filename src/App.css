@@ -1,5 +1,6 @@
 .App {
   background-color: #f4f4f4;
+  min-height: 100vh;
 }
 
 *{
@@ -57,6 +58,10 @@ nav a:hover {
 
 /* PROJECT PAGE */
 
+.projects-page {
+  padding-bottom: 50px;
+}
+
 .projectCard {
   /* background-color: #333; */
   height: 380px;
@@ -73,6 +78,14 @@ nav a:hover {
   width: 400px;
   /* background-color: blue; */
   object-fit: cover;
+}
+
+.fitCardImage {
+  height: 250px;
+  width: 400px;
+  /* background-color: blue; */
+  object-fit: contain;
+  background-color: rgb(233, 233, 233);;
 }
 
 .smallCardImageContainer {
@@ -137,6 +150,10 @@ nav a:hover {
 }
 .cardButton:hover {
   background-color: rgb(166, 115, 32);
+}
+
+.cardButton:disabled {
+  background-color: gray;
 }
 
 .pageTitle {
@@ -232,6 +249,7 @@ nav a:hover {
   text-decoration: none;
   padding: 10px;
   margin-right: 50px;
+  border: 1px solid white;
 }
 
 .action-buttons a:hover {
@@ -254,4 +272,26 @@ nav a:hover {
 .social-icons img {
   width: 40px; /* Adjust the width of the icons */
   height: auto; /* Maintain aspect ratio */
+}
+
+.hiddenText {
+  color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CAREER PAGE */
+.pdfContainer {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 180px;
+  height: 30px;
+}
+
+.resumeText {
+  color: black;
 }

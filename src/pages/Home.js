@@ -15,7 +15,7 @@ const Home = () => {
   const [french, setFrench] = useState(false)
 
   return (
-    <div>
+    <div className='home-page'>
       <div className="intro">
         <div className="triangle">
           <div className="trianglediv">
@@ -23,13 +23,25 @@ const Home = () => {
           </div>
           <div className="pp-border-container">
             <div className="pp-image-container">
-              <img src={pp} alt="Your Name" />
+              <img src={pp} alt="Your Name"  onClick={e => setFrench((e.detail===3 && !french) || (e.detail!==3 && french))}/>
             </div>
           </div>
         </div>
         <div className="intro-text" onClick={() => setFrench(!french)}>
           {/* <h1>{french ? "Salut, c'est Charles 👋" : "Hi, I'm Charles 👋"}</h1> */}
-          <Typewriter
+          {french && (<Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .changeDelay(50)
+                .changeDeleteSpeed(50)
+                .typeString("Salut, c'est Carlito")
+                .pauseFor(500)
+                .deleteChars(7)
+                .typeString("Charles 👋")
+                .start();
+            }}
+          />)}
+          {!french && (<Typewriter
             onInit={(typewriter) => {
               typewriter
                 .changeDelay(50)
@@ -40,12 +52,12 @@ const Home = () => {
                 .typeString("Charles 👋")
                 .start();
             }}
-          />
+          />)}
           
         </div>
       </div>
       <div className="more-content">
-        <p>I'm a senior at UCLA studying Computer Science. Welcome to my website!</p>
+        <p>{french ? "Je suis un eleve d'info a UCLA. Bienvenue sur mon site!" : "I'm a senior at UCLA studying Computer Science. Welcome to my website!"}</p>
         <div className="action-buttons">
           <Link to="/projects">
             See my projects
@@ -59,23 +71,23 @@ const Home = () => {
         </div>
       </div>
       <div className="social-icons">
-      <a href="https://www.linkedin.com/in/charlesbucquet/" target="_blank" rel="noopener noreferrer">
-        <SocialIcon network='linkedin'/>
-      </a>
-      <a href="https://github.com/cbucquet" target="_blank" rel="noopener noreferrer">
-        <SocialIcon network='github'/>
-      </a>
-      <a href="https://www.instagram.com/charlesbucquet/" target="_blank" rel="noopener noreferrer">
-        <SocialIcon network='instagram'/>
-      </a>
-      <a href="https://www.facebook.com/carlitobucquet/" target="_blank" rel="noopener noreferrer">
-        <SocialIcon network='facebook'/>
-      </a>
-      <a href=" https://twitter.com/charlesbucquet" target="_blank" rel="noopener noreferrer">
-        <SocialIcon network='twitter'/>
-      </a>
-     
-    </div>
+        <a href="https://www.linkedin.com/in/charlesbucquet/" target="_blank" rel="noopener noreferrer">
+          <SocialIcon network='linkedin'/>
+        </a>
+        <a href="https://github.com/cbucquet" target="_blank" rel="noopener noreferrer">
+          <SocialIcon network='github'/>
+        </a>
+        <a href="https://www.instagram.com/charlesbucquet/" target="_blank" rel="noopener noreferrer">
+          <SocialIcon network='instagram'/>
+        </a>
+        <a href="https://www.facebook.com/carlitobucquet/" target="_blank" rel="noopener noreferrer">
+          <SocialIcon network='facebook'/>
+        </a>
+        <a href=" https://twitter.com/charlesbucquet" target="_blank" rel="noopener noreferrer">
+          <SocialIcon network='twitter'/>
+        </a>
+      </div>
+      <div className='hiddenText'>triple click on me for the french website</div>
     </div>
   );
 };
