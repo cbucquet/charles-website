@@ -27,7 +27,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="intro-text" onClick={() => setFrench(!french)}>
+        <div className="intro-text">
           {/* <h1>{french ? "Salut, c'est Charles 👋" : "Hi, I'm Charles 👋"}</h1> */}
           {french && (<Typewriter
             onInit={(typewriter) => {
