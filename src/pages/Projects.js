@@ -1,5 +1,6 @@
 // src/pages/Projects.js
 import React from 'react';
+import explainasaurus from '../images/explainasaurus.png'
 import little_free_libgen from '../images/little_free_libgen.png'
 import budgetTrip from '../images/budgetTrip.png'
 import sportify from '../images/sportify.png'
@@ -12,9 +13,10 @@ import sharebook from '../images/sharebook.png'
 import brain from '../images/brain.jpeg'
 import bruinline from '../images/bruinline.png'
 import fitus from '../images/fitus.png'
+import winner_ribbon from '../images/winner.png'
 
 
-const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, imageType = "NORMAL" }) => {
+const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, imageType = "NORMAL", winner = false }) => {
     return (
       <div className="projectCard">
         <div className="cardInfoContainer">
@@ -31,6 +33,7 @@ const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, imageTyp
             )}
             <h3 className="cardTitle">{title}</h3>
             <p className="cardDesc">{description}</p>
+            {winner && (<img className="winnerRibbon" src={winner_ribbon}></img>)}
         </div>
 
         <div className="cardButtonContainer">
@@ -44,6 +47,14 @@ const ProjectCard = ({ title, imageSrc, description, projLink, gitLink, imageTyp
 const Projects = () => {
     const projectsData = [
       {
+        title: 'Explainasaurus',
+        imageSrc: explainasaurus,
+        description: 'Medical jargon explanations at your fingertips',
+        projLink: "https://devpost.com/software/explainasaurus",
+        gitLink: "https://github.com/rmboyce/explainasaurus",
+        imageType: "FIT",
+      },
+      {
         title: 'Little Free Libgen',
         imageSrc: little_free_libgen,
         description: 'Little Free Libraries for the Modern Era',
@@ -56,6 +67,7 @@ const Projects = () => {
         description: 'Enjoy sports and save the planet!',
         projLink: "https://devpost.com/software/sportify-aju8pv",
         gitLink: "https://github.com/KevZ1209/HOTHX-Sportify",
+        winner: true,
       },
       {
         title: 'Pomodoro Pro',
@@ -93,7 +105,7 @@ const Projects = () => {
       {
         title: 'GolfTrack',
         imageSrc: golftrack,
-        description: 'Aim your phone camera at the flagpole to find its distance',
+        description: 'Aim your phone camera at the flagpole and find its distance',
         projLink: "NONE",
         gitLink: "https://github.com/cbucquet/GolfTrack",
         imageType: "SMALL",
@@ -158,6 +170,8 @@ const Projects = () => {
             description={project.description}
             projLink={project.projLink}
             gitLink={project.gitLink}
+            imageType={project.imageType}
+            winner={project.winner}
             />
         ))}
         </div>
@@ -174,6 +188,7 @@ const Projects = () => {
             projLink={project.projLink}
             gitLink={project.gitLink}
             imageType={project.imageType}
+            winner={project.winner}
             />
         ))}
         </div>
