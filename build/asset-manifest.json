@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c7995dd2.css",
-    "main.js": "/static/js/main.a4a48e45.js",
+    "main.css": "/static/css/main.0fae09ac.css",
+    "main.js": "/static/js/main.2a39a237.js",
     "static/js/592.3414fc0e.chunk.js": "/static/js/592.3414fc0e.chunk.js",
     "static/media/little_free_libgen.png": "/static/media/little_free_libgen.6ed432a7f71552d19162.png",
     "static/media/budgetTrip.png": "/static/media/budgetTrip.cde39377918511db16da.png",
@@ -9,17 +9,18 @@
     "static/media/pomodoro_pro.png": "/static/media/pomodoro_pro.33f35ffc0cfa86fd02fe.png",
     "static/media/sportify.png": "/static/media/sportify.abdd8de104baf8da2760.png",
     "static/media/pp.jpg": "/static/media/pp.f036d6a8fee78a650228.jpg",
+    "static/media/explainasaurus.png": "/static/media/explainasaurus.3557b6f44f51956c90e4.png",
     "static/media/sharebook.png": "/static/media/sharebook.16a5c00e50280cec7999.png",
     "static/media/golftrack.png": "/static/media/golftrack.be78df08d2c0d54b5b5a.png",
     "static/media/brain.jpeg": "/static/media/brain.f80040cdf17457aafa33.jpeg",
     "static/media/fitus.png": "/static/media/fitus.bbab0fb546ecceec925c.png",
     "index.html": "/index.html",
-    "main.c7995dd2.css.map": "/static/css/main.c7995dd2.css.map",
-    "main.a4a48e45.js.map": "/static/js/main.a4a48e45.js.map",
+    "main.0fae09ac.css.map": "/static/css/main.0fae09ac.css.map",
+    "main.2a39a237.js.map": "/static/js/main.2a39a237.js.map",
     "592.3414fc0e.chunk.js.map": "/static/js/592.3414fc0e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7995dd2.css",
-    "static/js/main.a4a48e45.js"
+    "static/css/main.0fae09ac.css",
+    "static/js/main.2a39a237.js"
   ]
 }
