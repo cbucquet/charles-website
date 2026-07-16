@@ -1,9 +1,9 @@
 // src/pages/Home.js
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring, animate } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import gradPhoto from '../images/DSC06968.jpeg'
+import gradPhoto from '../images/graduation.jpeg'
 import explainasaurus from '../images/explainasaurus.png'
 import little_free_libgen from '../images/little_free_libgen.png'
 import pomodoro_pro from '../images/pomodoro_pro.png'
@@ -17,6 +17,48 @@ import 'react-social-icons/facebook'
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const taglineContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const taglineWord = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const TiltCard = ({ as: Component = "div", className = "", style, lift = false, children, ...rest }) => {
+  const ref = useRef(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0, hovering: false });
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    setTilt({ x: (0.5 - py) * 12, y: (px - 0.5) * 12, hovering: true });
+  };
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0, hovering: false });
+
+  const translateY = lift && tilt.hovering ? -6 : 0;
+
+  return (
+    <Component
+      ref={ref}
+      className={`${className} tilt-card`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        ...style,
+        transform: `perspective(800px) translateY(${translateY}px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+      }}
+      {...rest}
+    >
+      {children}
+    </Component>
+  );
 };
 
 const featuredWork = [
@@ -56,6 +98,52 @@ const Home = () => {
   const photoScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
   const heroTextOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
+  const heroPhotoRef = useRef(null);
+  const rawRotateX = useMotionValue(0);
+  const rawRotateY = useMotionValue(0);
+  const photoRotateX = useSpring(rawRotateX, { stiffness: 300, damping: 25 });
+  const photoRotateY = useSpring(rawRotateY, { stiffness: 300, damping: 25 });
+  const idleAnimRef = useRef({ x: null, y: null });
+
+  const stopIdlePhotoDrift = () => {
+    idleAnimRef.current.x?.stop();
+    idleAnimRef.current.y?.stop();
+  };
+
+  const startIdlePhotoDrift = () => {
+    idleAnimRef.current.x = animate(rawRotateX, [0, 1.6, 0, -1.6, 0], {
+      duration: 7,
+      repeat: Infinity,
+      ease: "easeInOut",
+    });
+    idleAnimRef.current.y = animate(rawRotateY, [0, -2, 0, 2, 0], {
+      duration: 9,
+      repeat: Infinity,
+      ease: "easeInOut",
+    });
+  };
+
+  useEffect(() => {
+    startIdlePhotoDrift();
+    return stopIdlePhotoDrift;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handlePhotoMouseMove = (e) => {
+    stopIdlePhotoDrift();
+    const rect = heroPhotoRef.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    rawRotateX.set((0.5 - py) * 14);
+    rawRotateY.set((px - 0.5) * 14);
+  };
+
+  const handlePhotoMouseLeave = () => {
+    rawRotateX.set(0);
+    rawRotateY.set(0);
+    startIdlePhotoDrift();
+  };
+
   return (
     <div className="home-page">
       <Helmet>
@@ -67,7 +155,13 @@ const Home = () => {
         <link rel="canonical" href="https://charles.bucquet.com/" />
       </Helmet>
       <section className="hero-section" ref={heroRef}>
-        <motion.div className="hero-photo" style={{ y: photoY, scale: photoScale }}>
+        <motion.div
+          ref={heroPhotoRef}
+          className="hero-photo"
+          onMouseMove={handlePhotoMouseMove}
+          onMouseLeave={handlePhotoMouseLeave}
+          style={{ y: photoY, scale: photoScale, rotateX: photoRotateX, rotateY: photoRotateY }}
+        >
           <img
             src={gradPhoto}
             alt="Charles Bucquet at UCLA graduation"
@@ -123,9 +217,16 @@ const Home = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.6 }}
-          variants={fadeUp}
+          variants={taglineContainer}
         >
-          Reluctant runner. Mid ukulelist. Certified Frenchman.
+          {["Reluctant runner.", "Mid ukulelist.", "Certified Frenchman."].map((part, i, arr) => (
+            <React.Fragment key={part}>
+              <motion.span variants={taglineWord} style={{ display: "inline-block" }}>
+                {part}
+              </motion.span>
+              {i < arr.length - 1 && " "}
+            </React.Fragment>
+          ))}
         </motion.h2>
       </section>
 
@@ -149,12 +250,12 @@ const Home = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
             >
-              <div
+              <TiltCard
                 className="work-image"
                 style={project.imageBg ? { backgroundColor: project.imageBg } : undefined}
               >
                 <img src={project.image} alt={project.title} />
-              </div>
+              </TiltCard>
               <div className="work-text">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -179,11 +280,11 @@ const Home = () => {
               variants={fadeUp}
               transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link to={item.to} className="cta-card">
+              <TiltCard as={Link} to={item.to} className="cta-card" lift>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
                 <span className="cta-arrow">→</span>
-              </Link>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

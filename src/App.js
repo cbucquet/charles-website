@@ -1,6 +1,6 @@
 // src/App.js
-import React, { useState } from 'react';
-import { Route, Link, NavLink, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Link, NavLink, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
@@ -8,6 +8,16 @@ import Career from './pages/Career';
 import './App.css';
 import signature from './images/signature.png'
 import { IoMenu, IoClose } from "react-icons/io5";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const navLinks = [
   { to: "/", label: "Home", end: true },
@@ -21,6 +31,7 @@ function App() {
 
   return (
     <div className='App'>
+      <ScrollToTop />
       <nav>
         <Link to="/" className="icon" onClick={() => setMenuOpen(false)}>
           <img src={signature} className="navImage" alt="Charles Bucquet" />

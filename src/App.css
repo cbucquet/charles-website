@@ -337,12 +337,13 @@ nav a {
   position: relative;
   padding: 40px 40px 80px;
   background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
+  perspective: 1000px;
 }
 
 .hero-photo {
   flex: 0 0 auto;
   width: min(380px, 38vw);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4.3;
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
@@ -584,8 +585,12 @@ nav a {
 }
 
 .cta-card:hover {
-  transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.tilt-card {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
 }
 
 .cta-card h3 {
