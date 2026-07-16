@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import gradPhoto from '../images/DSC06968.jpeg'
 import explainasaurus from '../images/explainasaurus.png'
 import little_free_libgen from '../images/little_free_libgen.png'
@@ -43,7 +44,7 @@ const featuredWork = [
 
 const ctaItems = [
   { to: "/projects", title: "Projects", desc: "Hackathon wins and things I've built for fun." },
-  { to: "/career", title: "Career", desc: "My professional journey, and a copy of my resume." },
+  { to: "/career", title: "Career", desc: "My professional journey." },
   { to: "/about", title: "About", desc: "Get to know me beyond the code." },
 ];
 
@@ -57,6 +58,14 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <Helmet>
+        <title>Charles Bucquet</title>
+        <meta
+          name="description"
+          content="Charles Bucquet, UCLA Computer Science graduate and software engineer. Portfolio, projects, and career."
+        />
+        <link rel="canonical" href="https://charles.bucquet.com/" />
+      </Helmet>
       <section className="hero-section" ref={heroRef}>
         <motion.div className="hero-photo" style={{ y: photoY, scale: photoScale }}>
           <img
@@ -78,6 +87,7 @@ const Home = () => {
                   .typeString("Charles 👋")
                   .start();
               }}
+              options={{ stringSplitter: (s) => Array.from(s) }}
             />)}
             {!french && (<Typewriter
               onInit={(typewriter) => {
@@ -90,6 +100,7 @@ const Home = () => {
                   .typeString("Charles 👋")
                   .start();
               }}
+              options={{ stringSplitter: (s) => Array.from(s) }}
             />)}
           </div>
           <div className="hero-badge">

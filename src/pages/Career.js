@@ -1,6 +1,7 @@
 // src/pages/Career.js
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -54,6 +55,14 @@ const Career = () => {
 
   return (
     <div className="career-page">
+      <Helmet>
+        <title>Career | Charles Bucquet</title>
+        <meta
+          name="description"
+          content="Charles Bucquet's career timeline: Software Development Engineer at Amazon Web Services, working on Amazon Cognito."
+        />
+        <link rel="canonical" href="https://charles.bucquet.com/career" />
+      </Helmet>
       <div className="page-intro">
         <motion.h2
           className="pageTitle"

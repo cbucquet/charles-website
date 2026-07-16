@@ -24,11 +24,11 @@ Runs the app at [http://localhost:3000](http://localhost:3000) with hot reload.
 npm run build
 ```
 
-Outputs a production build to `build/`. This folder is currently committed to the repo, since the deploy workflow (below) doesn't run its own build step — it deploys whatever is in `build/` as-is. If you change that, remember to run this and commit the output before pushing.
+Outputs a production build to `build/`. This folder is gitignored; the GitHub Actions workflows below run this build step themselves before deploying.
 
 ## Deployment
 
-Hosted on Firebase Hosting (project `charles-website-bd690`) at [charles-website-bd690.web.app](https://charles-website-bd690.web.app). Deployment is automated via GitHub Actions:
+Hosted on Firebase Hosting (project `charles-website-bd690`) at [charles.bucquet.com](https://charles.bucquet.com). Deployment is automated via GitHub Actions:
 
 - **Push to `main`** → `.github/workflows/firebase-hosting-merge.yml` deploys straight to the live site.
 - **Open a pull request** → `.github/workflows/firebase-hosting-pull-request.yml` deploys a preview channel and comments the preview URL on the PR.

@@ -1,6 +1,7 @@
 // src/pages/Projects.js
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import explainasaurus from '../images/explainasaurus.png'
 import little_free_libgen from '../images/little_free_libgen.png'
 import budgetTrip from '../images/budgetTrip.png'
@@ -170,6 +171,14 @@ const Projects = () => {
 
   return (
     <div className="projects-page">
+      <Helmet>
+        <title>Projects | Charles Bucquet</title>
+        <meta
+          name="description"
+          content="Software projects by Charles Bucquet, including Explainasaurus, Little Free Libgen, and Pomodoro Pro."
+        />
+        <link rel="canonical" href="https://charles.bucquet.com/projects" />
+      </Helmet>
       <div className="page-intro">
         <motion.h2
           className="pageTitle"

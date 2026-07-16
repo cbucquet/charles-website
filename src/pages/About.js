@@ -1,6 +1,7 @@
 // src/pages/About.js
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -26,6 +27,14 @@ const fadeUp = {
 const About = () => {
   return (
     <div className="about-page">
+      <Helmet>
+        <title>About | Charles Bucquet</title>
+        <meta
+          name="description"
+          content="A bit more about Charles Bucquet: photos, fun facts, and how to get in touch."
+        />
+        <link rel="canonical" href="https://charles.bucquet.com/about" />
+      </Helmet>
       <div className="page-intro">
         <motion.h2
           className="pageTitle"
@@ -98,13 +107,13 @@ const About = () => {
         >
           <h3>Fun Facts</h3>
           <ul className="about-facts-list">
-            <li>Run on Dragibus</li>
+            <li>Dragibus Addict</li>
             <li>Tudok magyarul beszélni A1 szinten</li>
             <li>Snowboard without catching an edge</li>
             <li>Attended 2 Grand Slams</li>
-            <li>Curl competitively</li>
-            <li>Taught myself ukulele</li>
-            <li>Play Team Instinct in Pokémon GO</li>
+            <li>Curler</li>
+            <li>Spam Over the Rainbow on ukulele</li>
+            <li>Favorite number is √44</li>
           </ul>
         </motion.div>
 

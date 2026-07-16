@@ -439,14 +439,14 @@ nav a {
 
 /* Tagline */
 .tagline-section {
-  min-height: 55vh;
+  min-height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1d1d1f;
   color: white;
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .tagline-section h2 {

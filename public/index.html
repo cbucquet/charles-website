@@ -10,6 +10,25 @@
       content="Charles Bucquet, UCLA Computer Science graduate and software engineer. Portfolio, projects, and career."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="canonical" href="https://charles.bucquet.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://charles.bucquet.com/" />
+    <meta property="og:title" content="Charles Bucquet" />
+    <meta
+      property="og:description"
+      content="Charles Bucquet, UCLA Computer Science graduate and software engineer. Portfolio, projects, and career."
+    />
+    <meta property="og:image" content="https://charles.bucquet.com/og-image.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Charles Bucquet" />
+    <meta
+      name="twitter:description"
+      content="Charles Bucquet, UCLA Computer Science graduate and software engineer. Portfolio, projects, and career."
+    />
+    <meta name="twitter:image" content="https://charles.bucquet.com/og-image.jpg" />
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -25,6 +44,31 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Charles Bucquet</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Charles Bucquet",
+        "url": "https://charles.bucquet.com/",
+        "image": "https://charles.bucquet.com/og-image.jpg",
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Amazon Web Services"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of California, Los Angeles"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/charlesbucquet/",
+          "https://github.com/cbucquet",
+          "https://www.instagram.com/charlesbucquet/",
+          "https://www.facebook.com/carlitobucquet/"
+        ]
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
