@@ -1,5 +1,5 @@
 // src/pages/About.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -25,6 +25,16 @@ const fadeUp = {
 };
 
 const About = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 700px)");
+    setIsMobile(mql.matches);
+    const handleChange = (e) => setIsMobile(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
   return (
     <div className="about-page">
       <Helmet>
@@ -72,7 +82,7 @@ const About = () => {
           swipeable={true}
           showStatus={false}
           centerMode={true}
-          centerSlidePercentage={33}
+          centerSlidePercentage={isMobile ? 82 : 33}
           transitionTime={1000}
           stopOnHover={true}
         >

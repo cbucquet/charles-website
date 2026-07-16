@@ -99,6 +99,7 @@ const Home = () => {
   const heroTextOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   const heroPhotoRef = useRef(null);
+  const photoTapTimestamps = useRef([]);
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
   const photoRotateX = useSpring(rawRotateX, { stiffness: 300, damping: 25 });
@@ -144,6 +145,15 @@ const Home = () => {
     startIdlePhotoDrift();
   };
 
+  const handlePhotoTripleTap = () => {
+    const now = Date.now();
+    photoTapTimestamps.current = [...photoTapTimestamps.current.filter(t => now - t < 600), now];
+    if (photoTapTimestamps.current.length >= 3) {
+      photoTapTimestamps.current = [];
+      setFrench(f => !f);
+    }
+  };
+
   return (
     <div className="home-page">
       <Helmet>
@@ -165,7 +175,7 @@ const Home = () => {
           <img
             src={gradPhoto}
             alt="Charles Bucquet at UCLA graduation"
-            onClick={e => setFrench((e.detail === 3 && !french) || (e.detail !== 3 && french))}
+            onClick={handlePhotoTripleTap}
           />
         </motion.div>
         <motion.div className="hero-content" style={{ opacity: heroTextOpacity }}>
