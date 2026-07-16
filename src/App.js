@@ -1,29 +1,52 @@
 // src/App.js
-import React from 'react';
-import { Route, Link, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Link, NavLink, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import Career from './pages/Career';
 import './App.css';
-import test from './images/test.png'
+import signature from './images/signature.png'
+import { IoMenu, IoClose } from "react-icons/io5";
 
+const navLinks = [
+  { to: "/", label: "Home", end: true },
+  { to: "/projects", label: "Projects" },
+  { to: "/career", label: "Career" },
+  { to: "/about", label: "About" },
+];
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className='App'>
       <nav>
-        <div className="icon">
+        <Link to="/" className="icon" onClick={() => setMenuOpen(false)}>
+          <img src={signature} className="navImage" alt="Charles Bucquet" />
+        </Link>
 
-          <Link to="/">
-            <img src={test} className="navImage" />
-          </Link>
-        </div>
-        <div className="navButton">
-          <Link to="/">Home</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/career">Career</Link>
-          <Link to="/about">About</Link>
+        <button
+          className="navToggle"
+          onClick={() => setMenuOpen(open => !open)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <IoClose /> : <IoMenu />}
+        </button>
+
+        <div className={`navButton${menuOpen ? " open" : ""}`}>
+          {navLinks.map(link => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) => isActive ? "active" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </div>
       </nav>
 
