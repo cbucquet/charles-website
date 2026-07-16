@@ -1,5 +1,6 @@
 // src/pages/About.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -46,7 +47,7 @@ const About = () => {
         <link rel="canonical" href="https://charles.bucquet.com/about" />
       </Helmet>
       <div className="page-intro">
-        <motion.h2
+        <motion.h1
           className="pageTitle"
           initial="hidden"
           whileInView="visible"
@@ -54,7 +55,7 @@ const About = () => {
           variants={fadeUp}
         >
           About Me
-        </motion.h2>
+        </motion.h1>
         <motion.p
           className="pageSubtitle"
           initial="hidden"
@@ -164,6 +165,7 @@ const About = () => {
           </div>
         </motion.div>
       </div>
+      <Link to="/career" className="work-more">See my career journey →</Link>
     </div>
   );
 };

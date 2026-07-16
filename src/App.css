@@ -365,6 +365,10 @@ nav a {
   text-align: left;
 }
 
+.hero-greeting {
+  margin: 0;
+}
+
 .hero-greeting * {
   font-size: clamp(24px, 5.5vw, 58px);
   font-weight: 700;

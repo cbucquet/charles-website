@@ -1,5 +1,6 @@
 // src/pages/Career.js
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -64,7 +65,7 @@ const Career = () => {
         <link rel="canonical" href="https://charles.bucquet.com/career" />
       </Helmet>
       <div className="page-intro">
-        <motion.h2
+        <motion.h1
           className="pageTitle"
           initial="hidden"
           whileInView="visible"
@@ -72,7 +73,7 @@ const Career = () => {
           variants={fadeUp}
         >
           My Career
-        </motion.h2>
+        </motion.h1>
         <motion.p
           className="pageSubtitle"
           initial="hidden"
@@ -113,6 +114,7 @@ const Career = () => {
           </motion.div>
         ))}
       </div>
+      <Link to="/projects" className="work-more">See what I've built →</Link>
     </div>
   );
 };

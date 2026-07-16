@@ -179,7 +179,7 @@ const Home = () => {
           />
         </motion.div>
         <motion.div className="hero-content" style={{ opacity: heroTextOpacity }}>
-          <div className="hero-greeting">
+          <h1 className="hero-greeting">
             {french && (<Typewriter
               onInit={(typewriter) => {
                 typewriter
@@ -206,7 +206,7 @@ const Home = () => {
               }}
               options={{ stringSplitter: (s) => Array.from(s) }}
             />)}
-          </div>
+          </h1>
           <div className="hero-badge">
             <span className="hero-badge-dot" />
             Software Engineer · Seattle, WA

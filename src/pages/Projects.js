@@ -1,5 +1,6 @@
 // src/pages/Projects.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import explainasaurus from '../images/explainasaurus.png'
@@ -180,7 +181,7 @@ const Projects = () => {
         <link rel="canonical" href="https://charles.bucquet.com/projects" />
       </Helmet>
       <div className="page-intro">
-        <motion.h2
+        <motion.h1
           className="pageTitle"
           initial="hidden"
           whileInView="visible"
@@ -188,7 +189,7 @@ const Projects = () => {
           variants={fadeUp}
         >
           Projects
-        </motion.h2>
+        </motion.h1>
         <motion.p
           className="pageSubtitle"
           initial="hidden"
@@ -233,6 +234,7 @@ const Projects = () => {
             <ProjectCard key={project.title} index={index} {...project} />
           ))}
         </div>
+        <Link to="/career" className="work-more">See my career journey →</Link>
       </div>
     </div>
   );
