@@ -111,12 +111,12 @@ const Home = () => {
   };
 
   const startIdlePhotoDrift = () => {
-    idleAnimRef.current.x = animate(rawRotateX, [0, 1.6, 0, -1.6, 0], {
+    idleAnimRef.current.x = animate(rawRotateX, [0, 4, 0, -4, 0], {
       duration: 7,
       repeat: Infinity,
       ease: "easeInOut",
     });
-    idleAnimRef.current.y = animate(rawRotateY, [0, -2, 0, 2, 0], {
+    idleAnimRef.current.y = animate(rawRotateY, [0, -3, 0, 5, 0], {
       duration: 9,
       repeat: Infinity,
       ease: "easeInOut",

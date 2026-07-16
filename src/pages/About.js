@@ -108,11 +108,11 @@ const About = () => {
           <h3>Fun Facts</h3>
           <ul className="about-facts-list">
             <li>Dragibus Addict</li>
-            <li>Tudok magyarul beszélni A1 szinten</li>
-            <li>Snowboard without catching an edge</li>
-            <li>Attended 2 Grand Slams</li>
-            <li>Curler</li>
-            <li>Spam Over the Rainbow on ukulele</li>
+            <li>Egy kicsit beszélek magyarul</li>
+            <li>Kinda ride switch on a snowboard</li>
+            <li>Made it to 2 grand slams (as a fan)</li>
+            <li>Training for 2030 curling Olympics</li>
+            <li>Know exactly 9 chords on ukulele</li>
             <li>Favorite number is √44</li>
           </ul>
         </motion.div>
