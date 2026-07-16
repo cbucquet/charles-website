@@ -1,4 +1,4 @@
-# charlesbucquet.com
+# charles.bucquet.com
 
 Personal portfolio site for Charles Bucquet — home, projects, career timeline, and about page. Built with React and deployed on Firebase Hosting.
 
