@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import basketball from "../images/basketball.png"
+import basketball from "../images/basketball.jpg"
 import hike from "../images/hike.JPG"
-import ski from "../images/ski.png"
-import skydive from "../images/skydive.PNG"
+import ski from "../images/ski.jpg"
+import skydive from "../images/skydive.jpg"
 import tennis from "../images/tennis.JPG"
-import wake from "../images/wake.png"
+import wake from "../images/wake.jpg"
 
 import { SocialIcon } from 'react-social-icons/component'
 import 'react-social-icons/linkedin'
